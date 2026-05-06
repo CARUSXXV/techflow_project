@@ -47,5 +47,36 @@
             <field name="cost">3500.00</field>
             <field name="purchase_date">2023-11-20</field>
         </record>
+        <record id="category_mobile" model="tech.category">
+            <field name="name">Dispositivos Móviles</field>
+            <field name="description">Smartphones y tablets corporativos</field>
+        </record>
+
+        <record id="equipment_iphone_15" model="tech.equipment">
+            <field name="name">iPhone 15 Pro</field>
+            <field name="serial">APL-2024-IPH15P</field>
+            <field name="category_id" ref="category_mobile"/>
+            <field name="state">available</field>
+            <field name="cost">999.00</field>
+            <field name="purchase_date">2024-03-01</field>
+        </record>
+
+        <record id="equipment_monitor_samsung" model="tech.equipment">
+            <field name="name">Samsung Odyssey G7</field>
+            <field name="serial">SAM-2024-MON001</field>
+            <field name="category_id" ref="category_peripheral"/>
+            <field name="state">available</field>
+            <field name="cost">600.00</field>
+            <field name="purchase_date">2024-01-20</field>
+        </record>
+
+        <record id="equipment_rack_server" model="tech.equipment">
+            <field name="name">Dell PowerEdge R740</field>
+            <field name="serial">DEL-2023-SRV002</field>
+            <field name="category_id" ref="category_server"/>
+            <field name="state">available</field>
+            <field name="cost">4500.00</field>
+            <field name="purchase_date">2023-10-15</field>
+        </record>
     </data>
 </odoo>

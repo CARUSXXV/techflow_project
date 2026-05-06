@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- Categoría para los grupos -->
+    <record id="module_category_tech_inventory" model="ir.module.category">
+        <field name="name">TechFlow - Gestión de Inventario</field>
+        <field name="sequence">10</field>
+    </record>
+
     <record id="group_tech_user" model="res.groups">
         <field name="name">Usuario IT</field>
-        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="category_id" ref="module_category_tech_inventory"/>
     </record>
 
     <record id="group_tech_manager" model="res.groups">
         <field name="name">Gerente IT</field>
-        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="category_id" ref="module_category_tech_inventory"/>
         <field name="implied_ids" eval="[(4, ref('group_tech_user'))]"/>
     </record>
 
@@ -17,7 +23,7 @@
         <field name="groups" eval="[(4, ref('group_tech_user'))]"/>
         <field name="perm_read" eval="True"/>
         <field name="perm_write" eval="True"/>
-        <field name="perm_create" eval="True"/>
+        <field name="perm_create" eval="False"/>
         <field name="perm_unlink" eval="False"/>
     </record>
 
