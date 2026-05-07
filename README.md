@@ -18,12 +18,12 @@ Se expandió la funcionalidad mediante el modelo `tech.rating`:
 - **Matriz de Seguridad:** Configuración granular de tres roles de usuario (Gerente, Usuario IT, Valorador) con restricciones de acceso a nivel de menú, modelo y registro.
 - **Mejoras de Accesibilidad:** Creación de una acción tipo "Wizard" mediante botón en el formulario de equipos para permitir a perfiles de solo lectura añadir valoraciones sin comprometer la integridad del equipo.
 
-### 🌟 Valor Agregado (Bonus)
+### Valor Agregado
 - **Smart Button de Valoraciones:** Se incorporó un botón estadístico en la ficha de equipo que muestra el conteo de evaluaciones en tiempo real y permite la navegación directa a ellas.
 - **Integridad de Datos Avanzada:** Validación de Python para impedir el registro de fechas de compra futuras, asegurando la veracidad histórica del inventario.
-- **Branding y Presentación:** Diseño de iconografía personalizada y creación de una página de aterrizaje (HTML) profesional para la interfaz de aplicaciones de Odoo, elevando la calidad visual del entregable.
+- **Branding y Presentación:** Diseño de iconografía personalizada y creación de una página de aterrizaje (HTML) profesional para la interfaz de aplicaciones de Odoo, elevando la calidad visual del entregable. Llenando la carpeta estática con los archivos necesarios
 
-## 🧑‍💻 Identificación del Candidato
+## Identificación
 - **Nombre:** Carmine Augusto Bernabei Palacios
 - **Fecha de Entrega:** 07 de Mayo de 2026
 - **Proyecto:** techflow_project
