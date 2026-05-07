@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tech_rating_list" model="ir.ui.view">
+        <field name="name">tech.rating.list</field>
+        <field name="model">tech.rating</field>
+        <field name="arch" type="xml">
+            <list string="Valoraciones">
+                <field name="name"/>
+                <field name="equipment_id"/>
+                <field name="evaluated_by_id"/>
+                <field name="rating_date"/>
+                <field name="rating" widget="priority"/>
+                <field name="is_recommended"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_tech_rating_form" model="ir.ui.view">
+        <field name="name">tech.rating.form</field>
+        <field name="model">tech.rating</field>
+        <field name="arch" type="xml">
+            <form string="Valoración">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="equipment_id"/>
+                            <field name="evaluated_by_id"/>
+                            <field name="rating_date"/>
+                        </group>
+                        <group>
+                            <field name="rating"/>
+                            <field name="is_recommended" readonly="1" force_save="1"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tech_rating" model="ir.actions.act_window">
+        <field name="name">Valoraciones</field>
+        <field name="res_model">tech.rating</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                ¡Registra tu primera valoración de equipo!
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -5,3 +5,7 @@ access_tech_equipment_user,tech.equipment.user,model_tech_equipment,tech_invento
 access_tech_equipment_manager,tech.equipment.manager,model_tech_equipment,tech_inventory.group_tech_manager,1,1,1,1
 access_tech_equipment_admin,tech.equipment.admin,model_tech_equipment,base.group_system,1,1,1,1
 access_tech_category_admin,tech.category.admin,model_tech_category,base.group_system,1,1,1,1
+access_tech_equipment_rater,tech.equipment.rater,model_tech_equipment,tech_inventory.group_tech_rater,1,0,0,0
+access_tech_rating_rater,tech.rating.rater,model_tech_rating,tech_inventory.group_tech_rater,1,1,1,0
+access_tech_rating_manager,tech.rating.manager,model_tech_rating,tech_inventory.group_tech_manager,1,1,1,1
+access_tech_rating_admin,tech.rating.admin,model_tech_rating,base.group_system,1,1,1,1

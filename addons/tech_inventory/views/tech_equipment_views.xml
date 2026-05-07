@@ -63,6 +63,14 @@
                     <field name="state" widget="statusbar" statusbar_visible="available,assigned,repair,decommissioned"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_ratings" 
+                                type="object" 
+                                class="oe_stat_button" 
+                                icon="fa-star">
+                            <field name="rating_count" widget="statinfo" string="Valoraciones"/>
+                        </button>
+                    </div>
                     <widget name="web_ribbon" title="Desincorporado" bg_color="text-bg-danger" invisible="state != 'decommissioned'"/>
                     <widget name="web_ribbon" title="En Reparación" bg_color="text-bg-warning" invisible="state != 'repair'"/>
                     <div class="oe_title">
@@ -101,6 +109,23 @@
                             <div class="alert alert-warning" role="alert" invisible="state != 'repair'">
                                 ⚠️ Este equipo está en reparación, no puede ser asignado temporalmente.
                             </div>
+                        </page>
+                        <page string="Valoraciones">
+                            <div class="mb-2">
+                                <button name="action_add_rating" 
+                                        string="Nueva Valoración" 
+                                        type="object" 
+                                        class="btn-primary" 
+                                        icon="fa-star"/>
+                            </div>
+                            <field name="rating_ids" readonly="1">
+                                <list>
+                                    <field name="rating_date"/>
+                                    <field name="evaluated_by_id"/>
+                                    <field name="rating" widget="priority"/>
+                                    <field name="is_recommended" widget="boolean_toggle" readonly="1"/>
+                                </list>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>

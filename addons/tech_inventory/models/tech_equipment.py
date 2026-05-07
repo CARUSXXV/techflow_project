@@ -57,15 +57,47 @@ class TechEquipment(models.Model):
     notes = fields.Text(string='Notas Adicionales')
     purchase_date = fields.Date(string='Fecha de Compra')
     
+    rating_ids = fields.One2many(
+        'tech.rating', 
+        'equipment_id', 
+        string='Valoraciones'
+    )
+    
+    rating_count = fields.Integer(
+        string='Cantidad de Valoraciones',
+        compute='_compute_rating_count'
+    )
+
     _sql_constraints = [
         ('serial_unique', 'unique(serial)', 'El número de serie debe ser único!')
     ]
+
+    @api.constrains('purchase_date')
+    def _check_purchase_date(self):
+        for record in self:
+            if record.purchase_date and record.purchase_date > fields.Date.today():
+                raise ValidationError(_('La fecha de compra no puede ser una fecha futura.'))
+
+    @api.onchange('purchase_date')
+    def _onchange_purchase_date(self):
+        if self.purchase_date and self.purchase_date > fields.Date.today():
+            return {
+                'warning': {
+                    'title': _("Fecha Inválida"),
+                    'message': _("La fecha de compra no puede ser una fecha futura."),
+                }
+            }
 
     @api.constrains('serial')
     def _check_serial_length(self):
         for record in self:
             if record.serial and len(record.serial) < 8:
                 raise ValidationError(_('El número de serie debe tener al menos 8 caracteres.'))
+
+    @api.depends('rating_ids')
+    def _compute_rating_count(self):
+        for record in self:
+            record.rating_count = len(record.rating_ids)
 
     @api.depends('cost')
     def _compute_tax_value(self):
@@ -94,6 +126,31 @@ class TechEquipment(models.Model):
             'state': 'available',
             'employee_id': False
         })
+
+    def action_add_rating(self):
+        self.ensure_one()
+        return {
+            'name': _('Nueva Valoración'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'tech.rating',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_equipment_id': self.id,
+                'default_evaluated_by_id': self.env.user.id,
+            }
+        }
+
+    def action_view_ratings(self):
+        self.ensure_one()
+        return {
+            'name': _('Valoraciones del Equipo'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'tech.rating',
+            'view_mode': 'list,form',
+            'domain': [('equipment_id', '=', self.id)],
+            'context': {'default_equipment_id': self.id},
+        }
 
 
 
